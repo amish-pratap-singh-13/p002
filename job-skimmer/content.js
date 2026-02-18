@@ -25,12 +25,10 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
 
   const arr = Array.from(links);
 
-  chrome.storage.local.get(["jobLinks"], (res) => {
-    const old = res.jobLinks || {};
-    old[msg.site] = Array.from(new Set([...(old[msg.site] || []), ...arr]));
-
-    chrome.storage.local.set({ jobLinks: old }, () => {
-      alert(`Captured ${arr.length} jobs for ${msg.site}`);
-    });
+  // 🚀 Send to background instead of storage
+  chrome.runtime.sendMessage({
+    action: "saveToBackend",
+    site: msg.site,
+    links: arr,
   });
 });

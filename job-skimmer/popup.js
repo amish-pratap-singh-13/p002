@@ -25,3 +25,11 @@ document.getElementById("capture-wellfound").onclick = () =>
 document.getElementById("capture-linkedin").onclick = () =>
   sendCapture("linkedin");
 document.getElementById("capture-naukri").onclick = () => sendCapture("naukri");
+
+document.getElementById("scrape-wellfound").onclick = () => {
+  const status = document.getElementById("scrape-status");
+  status.innerText = "Scraping started...";
+  chrome.runtime.sendMessage({ action: "scrape_jobs" }, (response) => {
+    status.innerText = response?.message ?? "Done!";
+  });
+};

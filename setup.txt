@@ -1,0 +1,11 @@
+helm repo add postgres https://raw.githubusercontent.com/hansehe/postgres-helm/master/helm/charts/postgres
+helm install postgres postgres/postgres
+
+tele_setup(){
+    curl -fL https://app.getambassador.io/download/tel2oss/releases/download/v2.21.3/telepresence-linux-amd64 -o /usr/local/bin/telepresence
+    chmod a+x /usr/local/bin/telepresence
+    telepresence helm install
+    telepresence connect
+}
+
+uvicorn main:app --reload --port 8000
