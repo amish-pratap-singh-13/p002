@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+  <head>
+    <style>
+      body {
+        font-family: Arial;
+        width: 320px;
+        padding: 10px;
+      }
+      .tabs {
+        display: flex;
+        margin-bottom: 10px;
+      }
+      .tab {
+        flex: 1;
+        padding: 8px;
+        border: 1px solid #ccc;
+        cursor: pointer;
+        text-align: center;
+      }
+      .tab.active {
+        background: #0a66c2;
+        color: white;
+      }
+      .panel {
+        display: none;
+      }
+      .panel.active {
+        display: block;
+      }
+      button {
+        width: 100%;
+        padding: 10px;
+        margin-top: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="tabs">
+      <div class="tab active" data-tab="wellfound">Wellfound</div>
+      <div class="tab" data-tab="linkedin">LinkedIn</div>
+      <div class="tab" data-tab="naukri">Naukri</div>
+    </div>
+
+    <div id="wellfound" class="panel active">
+      <button id="capture-wellfound">Capture</button>
+    </div>
+
+    <div id="linkedin" class="panel">
+      <button id="capture-linkedin">Capture</button>
+    </div>
+
+    <div id="naukri" class="panel">
+      <button id="capture-naukri">Capture</button>
+    </div>
+
+    <script src="popup.js"></script>
+  </body>
+</html>
